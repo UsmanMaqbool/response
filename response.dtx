@@ -1,0 +1,267 @@
+% \iffalse meta-comment
+% 
+% response.ins
+% 
+% Copyright (C) 2013 by Thai Son Hoang <htson at inf dot ethz dot ch>
+% --------------------------------------------------------------------
+% 
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3c
+% of this license or (at your option) any later version.
+% The latest version of this license is in:
+% 
+%      http://www.latex-project.org/lppl.txt
+% 
+% and version 1.3c or later is part of all distributions of LaTeX 
+% version 2008/05/04 or later.
+% 
+% This work has the LPPL maintenance status "author-maintained".
+% 
+% This work consists of the files response.dtx, response.ins,
+% the derived file response.cls, the generated documentation
+% response.pdf, and the sample document sample-responses.pdf.
+% 
+% \fi
+% 
+% \iffalse
+%<response>%%%%% BEGIN Identification part %%%%%
+%<response>\NeedsTeXFormat{LaTeX2e}\relax
+%<response>\ProvidesClass{response}
+%<response>    [2013/08/15 v1.0 Class for typesetting responses to paper reviews]
+%<response>%%%%% END Identification part %%%%%
+% 
+%<*driver> 
+\documentclass[a4paper]{ltxdoc}
+\EnableCrossrefs
+% ^^A\CodelineIndex
+\PageIndex
+\RecordChanges
+\begin{document}
+\DocInput{response.dtx}
+\end{document}
+%</driver> 
+% \fi
+% 
+% \CheckSum{0}
+% 
+% \CharacterTable
+% {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+% Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+% Digits        \0\1\2\3\4\5\6\7\8\9
+% Exclamation   \!     Double quote  \"     Hash (number) \#
+% Dollar        \$     Percent       \%     Ampersand     \&
+% Acute accent  \'     Left paren    \(     Right paren   \)
+% Asterisk      \*     Plus          \+     Comma         \,
+% Minus         \-     Point         \.     Solidus       \/
+% Colon         \:     Semicolon     \;     Less than     \<
+% Equals        \=     Greater than  \>     Question mark \?
+% Commercial at \@     Left bracket  \[     Backslash     \\
+% Right bracket \]     Circumflex    \^     Underscore    \_
+% Grave accent  \`     Left brace    \{     Vertical bar  \|
+% Right brace   \}     Tilde         \~}
+% 
+% 
+% \changes{v1.0}{2013/08/15}{Initial version}
+%
+% \DoNotIndex{\LoadClass, \PassOptionsToClass, \AtBeginDocument}
+% \DoNotIndex{\RequirePackage}
+% \DoNotIndex{\newcommand, \renewcommand, \newenvironment, \renewenvironment}
+% \DoNotIndex{\begin, \end}
+% \DoNotIndex{\LARGE, \textsf, \textbf, \textit}
+% \DoNotIndex{\paragraph}
+% \DoNotIndex{\bigskip, \medskip, \emph}
+% \DoNotIndex{\#}
+% \DoNotIndex{\VerbatimEnvironment}
+%
+% \GetFileInfo{response.cls}
+%
+% \title{The \textsf{response} class\thanks{This document
+% corresponds to \textsf{response.cls}~\fileversion, dated~\filedate.}}
+% \author{Thai Son Hoang \\ ETH-Zurich \\ \texttt{<htson at inf dot
+% ethz dot ch>}}
+% \date{August 15, 2013}
+% 
+% \maketitle
+% 
+% ^^A %%%%% Abstract %%%%%
+% \begin{abstract}
+%   This class provides a template for typesetting responses to paper reviews.
+%   It was developed at the Swiss Federal Institute of
+%   Technology Zurich (ETH-Zurich).
+% \end{abstract}
+% 
+% ^^A %%%%% Table of contents %%%%%
+% \tableofcontents
+% 
+% ^^A %%%%% Introduction %%%%%
+% \section{Introduction}
+% 
+% This package was developed in order to ease the typesetting of
+% responses to paper reviews in \LaTeX{}.
+% 
+% ^^A %%%%% Usage %%%%%%
+% \section{Usage}
+% To be written.
+% \StopEventually{
+% \PrintIndex
+% \PrintChanges
+% }
+%
+% ^^A %%%%% Implementation %%%%%
+% \section{Implementation}
+%
+% We load the standard |article| class and pass option |10pt| to it.
+%
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<response>
+%<response>%%%%% BEGIN Special class file commands %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\LoadClass{article}
+\PassOptionsToClass{10pt}{article}
+%    \end{macrocode}
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<response>%%%%% END Special class file commands %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+%
+% We load several utility packages, e.g., |a4wide|, |fancyvrb|
+% required for typesetting responses.
+%
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<response>
+%<response>%%%%% BEGIN Package loading %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\RequirePackage{a4wide}
+\RequirePackage{fancyvrb}
+%    \end{macrocode}
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%%%%% END Package loading %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+% 
+% \begin{macro}{\title@response}
+% \begin{macro}{\papertitle}
+% \begin{macro}{\author@response}
+% \begin{macro}{\paperauthor}
+% \begin{macro}{\acknowledgement@response}
+% \begin{macro}{\acknowledgement}
+%   Next, we define several internal fields with some default values
+%   and commands for setting (redefining) these internal fields.
+%   
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class
+%   file
+%<response>
+%<response>%%%%% BEGIN Fields with some default value %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\newcommand{\title@response}{Paper title}
+\newcommand{\papertitle}[1]{\renewcommand{\title@response}{#1}}
+\newcommand{\author@response}{Paper author}
+\newcommand{\paperauthor}[1]{\renewcommand{\author@response}{#1}}
+\newcommand{\acknowledgement@response}{%
+  We are in debt to the anonymous reviewers for their constructive
+  comments of the paper. We have updated our paper accordingly and
+  addressed the reviewers' concerns. Below are the summary of our
+  updates with regards to the reviewers' comments.%
+}
+\newcommand{\acknowledgement}[1]{\renewcommand{\acknowledgement@response}{#1}}
+%    \end{macrocode}
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<response>%%%%% END Fields with some default value %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+% \end{macro}^^A{\acknowledgement}
+% \end{macro}^^A{\acknowledgement@response}
+% \end{macro}^^A{\paperauthor}
+% \end{macro}^^A{\author@response} 
+% \end{macro}^^A{\papertitle}
+% \end{macro}^^A{\title@response}
+%
+% \begin{macro}{maketitle}
+%   We redefine |\maketitle| accordingly.
+%
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class
+%   file
+%<response>
+%<response>%%%%% BEGIN Title %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+%
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<response>
+%<response>% Redefine \maketitle
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\renewcommand{\maketitle} {
+  \begin{center}
+    {\LARGE \textsf{Responses to Reviewers' Comments}}
+    
+    \bigskip
+    
+    for paper titled
+    
+    \emph{\title@response}
+    
+    by
+  
+    \textsf{\author@response}
+  \end{center}
+
+  \bigskip
+
+  \paragraph{Thanks}
+  \acknowledgement@response }
+%    \end{macrocode}
+% \end{macro}^^A{\maketitle}
+%
+% We ensure that |\maketitle| is executed at beginning of the
+% document.
+%
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<response>
+%<response>% Always start with title
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\AtBeginDocument{
+  \maketitle
+}
+%    \end{macrocode}
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<response>
+%<response>%%%%% END title %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+%
+% \begin{environment}{comment}
+% \begin{environment}{response}
+%   We define two special environments for reviewers' comments and
+%   authors' responses.
+%
+%   \iffalse ^^A BEGIN Produce comments only in the resulting class
+%   file
+%<response>
+%<response>%%%%% BEGIN Special environments %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+%    \begin{macrocode}
+\newenvironment{comment}[1]
+{
+  \VerbatimEnvironment \bigskip
+  \textbf{Reviewer \#{#1}:}
+  \begin{Verbatim}
+}{
+  \end{Verbatim}
+}
+
+\newenvironment{response}
+{
+  \medskip \textit{Response:}
+}
+{}
+%    \end{macrocode}
+% \iffalse ^^A BEGIN Produce comments only in the resulting class file
+%<response>%%%%% END Special environments %%%%%
+% \fi^^A END Produce comments only in the resulting class file
+%
+% \end{environment}^^A{response}
+% \end{environment}^^A{comment}
+% %
+% \Finale
+\endinput
+
